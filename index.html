@@ -194,7 +194,8 @@ document.getElementById('noBtn').onclick = () => {
 
 document.getElementById('yesBtn').onclick = () => {
     const music = document.getElementById("bgMusic");
-    music.play().catch(() => {});
+    music.volume = 0.9; // 90% volume
+music.play().catch(() => {});
 
     hideAll();
     document.getElementById('choice').classList.remove('hidden');
@@ -224,6 +225,7 @@ function hideAll() {
 
 </body>
 </html>
+
 
 
 
