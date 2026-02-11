@@ -14,7 +14,7 @@ body {
     color: white;
 }
 
-/* Hearts animation */
+/* ❤️ Hearts */
 .heart {
     position: absolute;
     width: 15px;
@@ -41,31 +41,30 @@ body {
     to { transform: translateY(-10vh) rotate(45deg); }
 }
 
-/* Center card */
+/* Card */
 .container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.35);
     padding: 30px;
     border-radius: 20px;
     text-align: center;
     width: 85%;
-    max-width: 400px;
+    max-width: 420px;
 }
 
-h1 {
-    margin-bottom: 5px;
-}
+h1 { margin-bottom: 8px; }
 
 .small {
     font-size: 0.9em;
     margin-bottom: 20px;
 }
 
+/* Buttons */
 .buttons button {
-    padding: 12px 25px;
+    padding: 12px 28px;
     margin: 5px;
     border: none;
     border-radius: 30px;
@@ -82,19 +81,19 @@ h1 {
 /* Frames */
 .frames {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     justify-content: center;
 }
 
 .frame {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     background: rgba(255,255,255,0.2);
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2em;
+    font-size: 2.2em;
     cursor: pointer;
 }
 
@@ -102,116 +101,14 @@ h1 {
 .gallery img {
     width: 100%;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .return {
     margin-top: 10px;
     padding: 10px;
-    background: white;
-    color: black;
-    border-radius: 20px;
-    cursor: pointer;
-}
-</style>
-</head>
+    bac
 
-<body>
-
-<audio id="bgMusic" loop>
-    <source src="margarete.mp3" type="audio/mpeg">
-</audio>
-
-<div id="main" class="container">
-    <h1>Sawubona nana ❤️</h1>
-    <div class="small">You know your man loves you right</div>
-
-    <div class="buttons">
-        <button class="yes" id="yesBtn">Yes</button>
-        <button class="no" id="noBtn">No</button>
-    </div>
-</div>
-
-<div id="choice" class="container hidden">
-    <div class="frames">
-        <div class="frame" onclick="openGallery()">🖼️</div>
-        <div class="frame" onclick="openNote()">📝</div>
-    </div>
-</div>
-
-<div id="gallery" class="container hidden gallery">
-    <img src="images/photo1.jpg">
-    <img src="images/photo2.jpg">
-    <img src="images/photo3.jpg">
-    <div class="return" onclick="backToFrames()">Return</div>
-</div>
-
-<div id="note" class="container hidden">
-    <h2>My Message To You ❤️</h2>
-    <p>
-        My love, every day with you is my favorite story.
-        You are my peace, my happiness, my home.
-        I love you endlessly.
-    </p>
-    <div class="return" onclick="backToFrames()">Return</div>
-</div>
-
-<script>
-/* Hearts */
-setInterval(() => {
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-}, 300);
-
-/* Buttons */
-let noScale = 1;
-document.getElementById('noBtn').onclick = () => {
-    noScale -= 0.15;
-    document.getElementById('noBtn').style.transform = `scale(${noScale})`;
-    document.getElementById('yesBtn').style.transform = `scale(${1 + (1 - noScale)})`;
-    if (noScale <= 0.2) document.getElementById('noBtn').remove();
-};
-
-document.getElementById('yesBtn').onclick = () => {
-    document.getElementById('main').classList.add('hidden');
-    document.getElementById('choice').classList.remove('hidden');
-};
-
-/* Navigation */
-function openGallery() {
-    hideAll();
-    document.getElementById('gallery').classList.remove('hidden');
-}
-
-function openNote() {
-    hideAll();
-    document.getElementById('note').classList.remove('hidden');
-}
-
-function backToFrames() {
-    hideAll();
-    document.getElementById('choice').classList.remove('hidden');
-}
-
-function hideAll() {
-    document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
-}
-    <script>
-const music = document.getElementById("bgMusic");
-
-document.body.addEventListener("click", () => {
-    if (music.paused) {
-        music.play().catch(() => {});
-    }
-}, { once: true });
-</script>
-
-</body>
-</html>
 
 
 
