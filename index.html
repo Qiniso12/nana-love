@@ -118,7 +118,7 @@ h1 {
 
 <body>
 
-<audio autoplay loop>
+<audio id="bgMusic" loop>
     <source src="margarete.mp3" type="audio/mpeg">
 </audio>
 
@@ -200,8 +200,19 @@ function backToFrames() {
 function hideAll() {
     document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
 }
+    <script>
+const music = document.getElementById("bgMusic");
+
+document.body.addEventListener("click", () => {
+    if (music.paused) {
+        music.play().catch(() => {});
+    }
+}, { once: true });
+</script>
+
 </script>
 
 </body>
 </html>
+
 
