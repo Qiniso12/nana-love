@@ -119,7 +119,7 @@ h1 { margin-bottom: 8px; }
 
 <!-- 🎵 Background Music -->
 <audio id="bgMusic" loop>
-    <source src="margarete.mp3" type="audio/mpeg">
+    <source src="margaret.mp3" type="audio/mpeg">
 </audio>
 
 <!-- Main Screen -->
@@ -174,11 +174,7 @@ setInterval(() => {
 
 /* 🎵 Music (starts after first click) */
 const music = document.getElementById("bgMusic");
-document.addEventListener("click", () => {
-    if (music.paused) {
-        music.play().catch(() => {});
-    }
-}, { once: true });
+
 
 /* ✅ Yes / No logic */
 let noScale = 1;
@@ -195,6 +191,9 @@ document.getElementById('noBtn').onclick = () => {
 };
 
 document.getElementById('yesBtn').onclick = () => {
+    const music = document.getElementById("bgMusic");
+    music.play().catch(() => {});
+
     hideAll();
     document.getElementById('choice').classList.remove('hidden');
 };
@@ -223,6 +222,7 @@ function hideAll() {
 
 </body>
 </html>
+
 
 
 
