@@ -107,7 +107,122 @@ h1 { margin-bottom: 8px; }
 .return {
     margin-top: 10px;
     padding: 10px;
-    bac
+    background: white;
+    color: black;
+    border-radius: 20px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" loop>
+    <source src="margaret.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Main Screen -->
+<div id="main" class="container">
+    <h1>Sawubona nana ❤️</h1>
+    <div class="small">You know your man loves you right</div>
+
+    <div class="buttons">
+        <button class="yes" id="yesBtn">Yes</button>
+        <button class="no" id="noBtn">No</button>
+    </div>
+</div>
+
+<!-- Choice Screen -->
+<div id="choice" class="container hidden">
+    <div class="frames">
+        <div class="frame" onclick="openGallery()">🖼️</div>
+        <div class="frame" onclick="openNote()">📝</div>
+    </div>
+</div>
+
+<!-- Gallery -->
+<div id="gallery" class="container hidden gallery">
+    <img src="images/photo1.jpg">
+    <img src="images/photo2.jpg">
+    <img src="images/photo3.jpg">
+    <div class="return" onclick="backToFrames()">Return</div>
+</div>
+
+<!-- Note -->
+<div id="note" class="container hidden">
+    <h2>My Message To You ❤️</h2>
+    <p>
+        My love, every day with you is my favorite story.
+        You are my peace, my happiness, my home.
+        I love you endlessly.
+    </p>
+    <div class="return" onclick="backToFrames()">Return</div>
+</div>
+
+<!-- 🔧 JavaScript -->
+<script>
+/* ❤️ Hearts */
+setInterval(() => {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 300);
+
+/* 🎵 Music (starts after first click) */
+const music = document.getElementById("bgMusic");
+document.addEventListener("click", () => {
+    if (music.paused) {
+        music.play().catch(() => {});
+    }
+}, { once: true });
+
+/* ✅ Yes / No logic */
+let noScale = 1;
+
+document.getElementById('noBtn').onclick = () => {
+    noScale -= 0.15;
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+
+    noBtn.style.transform = `scale(${noScale})`;
+    yesBtn.style.transform = `scale(${1 + (1 - noScale)})`;
+
+    if (noScale <= 0.2) noBtn.remove();
+};
+
+document.getElementById('yesBtn').onclick = () => {
+    hideAll();
+    document.getElementById('choice').classList.remove('hidden');
+};
+
+/* 📂 Navigation */
+function openGallery() {
+    hideAll();
+    document.getElementById('gallery').classList.remove('hidden');
+}
+
+function openNote() {
+    hideAll();
+    document.getElementById('note').classList.remove('hidden');
+}
+
+function backToFrames() {
+    hideAll();
+    document.getElementById('choice').classList.remove('hidden');
+}
+
+function hideAll() {
+    document.querySelectorAll('.container')
+        .forEach(c => c.classList.add('hidden'));
+}
+</script>
+
+</body>
+</html>
 
 
 
